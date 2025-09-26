@@ -26,10 +26,10 @@ class EpiForm(forms.ModelForm):
 class EmprestimoForm(forms.ModelForm):
     class Meta:
         model = Emprestimo
-        fields = ['colaborador', 'epi', 'quantidade', 'status']
+        fields = ['colaborador', 'epi', 'quantidade']
         widgets = {
             'colaborador': forms.Select(attrs={'class': 'form-select', 'style': 'width: 300px;'}),
             'epi': forms.Select(attrs={'class': 'form-select', 'style': 'width: 300px;'}),
             'quantidade': forms.NumberInput(attrs={'class': 'form-control', 'style': 'width: 300px;'}),
-            'status': forms.Select(attrs={'class': 'form-select', 'style': 'width: 300px;'}),
+            #'status': forms.Select(attrs={'class': 'form-select', 'style': 'width: 300px;'}),
         }

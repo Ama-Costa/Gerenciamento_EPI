@@ -1,15 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html>
 <head><title>Editar EPI</title></head>
 <body>
     <h1>Editar EPI</h1>
-    <a href="{% url 'listar_epis' %}">Voltar</a>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Salvar</button>
-        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">← Voltar</a>
+        <a href="{% url 'listar_epis' %}" class="btn btn-secondary mt-3">← Voltar</a>
 
     </form>
 </body>
 </html>
+{% endblock %}

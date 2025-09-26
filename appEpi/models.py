@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Colaborador(models.Model):
@@ -41,6 +42,13 @@ class Emprestimo(models.Model):
     data_emprestimo = models.DateField(auto_now_add=True)
     quantidade = models.PositiveIntegerField(default=1)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Em uso')
+    prazo_devolucao = models.DateField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.prazo_devolucao:
+            from datetime import timedelta
+            self.prazo_devolucao = timezone.now().date() + timedelta(days=30)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.colaborador} - {self.epi} ({self.status})"
